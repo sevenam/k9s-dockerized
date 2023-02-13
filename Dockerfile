@@ -16,4 +16,4 @@ RUN ["make", "build"]
 WORKDIR "/root/k9s/execs"
 
 RUN ["ln", "-sf", "/bin/bash", "/bin/sh"]
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]

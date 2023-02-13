@@ -21,7 +21,9 @@ docker run --name k9s k9s-dockerized:latest
 # create new container
 docker container create -i -t --name k9s k9s-dockerized:latest
 # spin up the new container instance
- docker container start k9s
+docker container start k9s
+# attach to the container
+docker attach k9s
 ```
 
 
