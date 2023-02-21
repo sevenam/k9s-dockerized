@@ -6,6 +6,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "vim"]
 RUN ["apt-get", "install", "-y", "git"]
+RUN ["apt-get", "install", "-y", "jq"]
 RUN ["apt-get", "install", "-y", "kubectl"]
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 

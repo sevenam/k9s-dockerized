@@ -24,7 +24,19 @@ docker container create -i -t --name k9s k9s-dockerized:latest
 docker container start k9s
 # attach to the container
 docker attach k9s
+# delete the container
+docker rm k9s
 ```
 
+## aks
 
+```bash
+# list clusters names
+az aks list | jq '.[].name'
 
+# list cluster resource groups:
+ az aks list | jq '.[].resourceGroup'
+
+# get credentials for cluster
+az aks get-credentials --resource-group <resource-group> --name <cluster-name>
+```
