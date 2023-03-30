@@ -24,6 +24,9 @@ docker rm k9s
 ## aks
 
 ```bash
+# login
+az login
+
 # list clusters names
 az aks list | jq '.[].name'
 
