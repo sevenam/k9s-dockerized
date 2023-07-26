@@ -1,7 +1,8 @@
 # k9s-dockerized
+
 k9s-in-a-container
 
-Just a dockerfile with azure cli, git, vim, kubectl and k9s
+Just a dockerfile with azure cli, git, vim, kubectl, flux-cli and k9s
 
 
 ## howto

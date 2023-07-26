@@ -14,6 +14,7 @@ RUN ["apt-get", "install", "-y", "git"]
 RUN ["apt-get", "install", "-y", "jq"]
 RUN ["apt-get", "install", "-y", "kubectl"]
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+RUN curl -s https://fluxcd.io/install.sh | FLUX_VERSION=2.0.0 bash
 
 WORKDIR "/root"
 RUN ["git", "clone", "https://github.com/derailed/k9s.git"]
