@@ -26,4 +26,4 @@ jobs:
       run: docker build . --file Dockerfile --tag sevenam/k9s-dockerized:${SHORT_SHA}
 
     - name: Docker Push
-      run: docker push sevenam/k9s-dockerized:${SHORT_SHA}
+      run: docker push sevenam/k9s-dockerized:latest
