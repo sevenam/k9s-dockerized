@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Add SHORT_SHA env property with commit short sha
+      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
     - uses: actions/checkout@v3
     - name: docker login
       env:
@@ -21,7 +23,7 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag sevenam/k9s-dockerized:${{github.sha::7}}
+      run: docker build . --file Dockerfile --tag sevenam/k9s-dockerized:${{SHORT_SHA}}
 
     - name: Docker Push
-      run: docker push sevenam/k9s-dockerized:${{github.sha::7}}
+      run: docker push sevenam/k9s-dockerized:${{SHORT_SHA}}
