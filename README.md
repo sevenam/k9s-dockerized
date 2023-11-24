@@ -4,6 +4,11 @@ k9s-in-a-container
 
 Just a dockerfile with azure cli, git, vim, kubectl, flux-cli and k9s
 
+Get with:
+
+```bash
+docker pull sevenam/k9s-dockerized
+```
 
 ## howto
 
