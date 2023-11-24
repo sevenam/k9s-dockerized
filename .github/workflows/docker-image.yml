@@ -23,7 +23,9 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag sevenam/k9s-dockerized:${SHORT_SHA}
+      run: docker build . --file Dockerfile --tag sevenam/k9s-dockerized:latest
+      # run: docker build . --file Dockerfile --tag sevenam/k9s-dockerized:${SHORT_SHA}
 
     - name: Docker Push
       run: docker push sevenam/k9s-dockerized:latest
+      # run: docker push sevenam/k9s-dockerized:${SHORT_SHA}
