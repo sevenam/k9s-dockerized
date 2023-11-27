@@ -33,6 +33,11 @@ docker rm k9s
 # login
 az login
 
+# ensure the correct azure subscription has been set
+az account set --subscription <guid>
+# verify correct account is set
+az account show
+
 # list clusters names
 az aks list | jq '.[].name'
 
