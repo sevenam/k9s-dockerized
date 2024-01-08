@@ -47,3 +47,4 @@ az aks list | jq '.[].name'
 # get credentials for cluster
 az aks get-credentials --resource-group <resource-group> --name <cluster-name>
 ```
+
