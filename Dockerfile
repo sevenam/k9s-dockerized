@@ -1,4 +1,4 @@
-FROM golang:bookworm
+FROM golang:bullseye
 
 # RUN ["rmdir", "/etc/apt/keyrings"]
 # RUN ["mkdir", "/etc/apt/keyrings"]
