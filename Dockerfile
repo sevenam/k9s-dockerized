@@ -1,13 +1,19 @@
 FROM golang:bullseye
 
-# RUN ["rmdir", "/etc/apt/keyrings"]
+
+
+RUN ["rmdir", "/etc/apt/keyrings"]
 # RUN ["mkdir", "/etc/apt/keyrings"]
 # RUN ["curl", "-fsSLo", "/etc/apt/keyrings/kubernetes-archive-keyring.gpg", "https://packages.cloud.google.com/apt/doc/apt-key.gpg"]
 # RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
 
 # RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
 # RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /etc/apt/keyrings/kubernetes.gpg
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+# Installing kubectl:
+RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+RUN chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged APT programs to read this keyring
 
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "vim"]
