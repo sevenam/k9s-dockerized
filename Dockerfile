@@ -13,7 +13,7 @@ RUN ["rmdir", "/etc/apt/keyrings"]
 
 # Installing kubectl:
 RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-RUN chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged APT programs to read this keyring
+RUN chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "vim"]
