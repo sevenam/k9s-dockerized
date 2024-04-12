@@ -4,10 +4,13 @@ k9s-in-a-container
 
 Just a dockerfile with azure cli, git, vim, kubectl, flux-cli and k9s
 
-Get with:
+Docker Hub:
 
 ```bash
+## get
 docker pull sevenam/k9s-dockerized
+## create new container
+docker container create -i -t --name k9s sevenam/k9s-dockerized:latest
 ```
 
 ## howto
