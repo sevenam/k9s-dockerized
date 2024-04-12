@@ -8,7 +8,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https
 RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
 RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /etc/apt/keyrings/kubernetes.gpg
 
-# RUN ["apt-get", "update"]
+RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "vim"]
 RUN ["apt-get", "install", "-y", "git"]
 RUN ["apt-get", "install", "-y", "jq"]
