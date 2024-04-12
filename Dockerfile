@@ -2,8 +2,8 @@ FROM golang:bullseye
 
 
 
-RUN ["rmdir", "/etc/apt/keyrings"]
-# RUN ["mkdir", "/etc/apt/keyrings"]
+# RUN ["rmdir", "/etc/apt/keyrings"]
+RUN ["mkdir", "/etc/apt/keyrings"]
 # RUN ["curl", "-fsSLo", "/etc/apt/keyrings/kubernetes-archive-keyring.gpg", "https://packages.cloud.google.com/apt/doc/apt-key.gpg"]
 # RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
 
