@@ -50,3 +50,28 @@ az aks list | jq '.[].name'
 # get credentials for cluster
 az aks get-credentials --resource-group <resource-group> --name <cluster-name>
 ```
+
+## upgrading and keeping the config
+
+```bash
+# start the container
+sudo docker container start k9s
+# copy the config from the container
+sudo docker cp k9s:/root/.kube/config ./config-backup
+# stop the container
+sudo docker container stop k9s
+# delete the container
+sudo docker container rm k9s
+# pull the new image
+sudo docker pull sevenam/k9s-dockerized
+# create the new container
+sudo docker container create -i -t --name k9s sevenam/k9s-dockerized:latest
+# start the container
+sudo docker container start k9s
+# attach to the container
+sudo docker container attach k9s
+# create the .kube folder inside the container
+mkdir /root/.kube
+# copy the config to the new container
+sudo docker cp ./config-backup k9s:/root/.kube/config
+```
