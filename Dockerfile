@@ -14,12 +14,12 @@ RUN curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/
 RUN apt-get install apt-transport-https --yes
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
 
-RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "-y", "vim"]
-RUN ["apt-get", "install", "-y", "git"]
-RUN ["apt-get", "install", "-y", "jq"]
-RUN ["apt-get", "install", "-y", "kubectl"]
-RUN ["apt-get", "install", "-y", "helm"]
+RUN ["apt", "update"]
+RUN ["apt", "install", "-y", "vim"]
+RUN ["apt", "install", "-y", "git"]
+RUN ["apt", "install", "-y", "jq"]
+RUN ["apt", "install", "-y", "kubectl"]
+RUN ["apt", "install", "-y", "helm"]
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 RUN curl -s https://fluxcd.io/install.sh | FLUX_VERSION=2.0.0 bash
 
