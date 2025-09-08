@@ -3,18 +3,24 @@ FROM golang:bullseye
 # RUN ["rmdir", "/etc/apt/keyrings"]
 RUN ["mkdir", "/etc/apt/keyrings"]
 
-# Installing kubectl (this has to be updated now and then - see: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+# install packages required to install kubectl and helm
+RUN ["apt-get", "update"]
+RUN ["apt", "install", "-y", "curl"]
+RUN ["apt", "install", "-y", "apt-transport-https"]
+RUN ["apt", "install", "-y", "ca-certificates"]
+RUN ["apt", "install", "-y", "gpg"]
+
+# Installing kubectl - this has to be updated now and then - see: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 RUN chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-RUN echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+RUN echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 RUN chmod 644 /etc/apt/sources.list.d/kubernetes.list
 
-# Installing helm - see https://helm.sh/docs/intro/install/
-RUN curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null
-RUN apt-get install apt-transport-https --yes
-RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
+# Installing helm - this has to be updated now and then see https://helm.sh/docs/intro/install/
+RUN curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null
+RUN echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
 
-RUN ["apt", "update"]
+RUN ["apt-get", "update"]
 RUN ["apt", "install", "-y", "vim"]
 RUN ["apt", "install", "-y", "git"]
 RUN ["apt", "install", "-y", "jq"]
