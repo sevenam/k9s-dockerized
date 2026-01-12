@@ -1,4 +1,4 @@
-FROM golang:bullseye
+FROM golang:latest
 
 # RUN ["rmdir", "/etc/apt/keyrings"]
 RUN ["mkdir", "/etc/apt/keyrings"]
