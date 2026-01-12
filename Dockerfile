@@ -1,7 +1,7 @@
 FROM golang:latest
 
 # RUN ["rmdir", "/etc/apt/keyrings"]
-RUN ["mkdir", "/etc/apt/keyrings"]
+RUN ["mkdir", "-p", "/etc/apt/keyrings"]
 
 # install packages required to install kubectl and helm
 RUN ["apt-get", "update"]
